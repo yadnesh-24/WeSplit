@@ -27,6 +27,18 @@ struct ContentView: View {
                         }
                     }
                 }
+                Section ("How much do you want to tip?") {
+                    Picker("Tip Percentage", selection: $tipAmount) {
+                        ForEach(tipPercentages, id: \.self) {
+                            Text("\($0)%")
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
+                
+                Section {
+                    Text(billAmount, format: .currency(code: Locale.current.currency?.identifier ?? "INR"))
+                }
             }
             .navigationTitle("WeSplit")
         }
