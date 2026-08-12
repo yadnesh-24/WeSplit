@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var billAmount = 0.0
+    @State private var numberOfPeople = 2
+    @State private var tipAmount = 0
+    
+    let tipPercentages = [10, 15, 20, 25, 0]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Form {
+            Section {
+                TextField ("Amount", value: $billAmount, format: .currency(code: Locale.current.currency?.identifier ?? "INR"))
+                    .keyboardType(.decimalPad)
+            }
         }
-        .padding()
     }
 }
 
